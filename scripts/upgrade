@@ -1,0 +1,13 @@
+#!/bin/bash
+source _common.sh
+source /usr/share/yunohost/helpers
+set -euo pipefail
+
+ynh_script_progression "Updating any-sync compose files..."
+
+cd "$install_dir"
+git pull --ff-only || true
+docker compose pull
+docker compose up -d --remove-orphans
+
+ynh_script_progression "Anytype sync stack updated."
