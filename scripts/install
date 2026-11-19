@@ -1,0 +1,37 @@
+#!/bin/bash
+source _common.sh
+source /usr/share/yunohost/helpers
+set -euo pipefail
+
+ynh_script_progression "Deploying the any-sync Docker stack..."
+
+if [ ! -d "$install_dir" ]; then
+    git clone https://github.com/anyproto/any-sync-dockercompose.git "$install_dir"
+fi
+
+cd "$install_dir"
+
+if [ ! -f .env ]; then
+    cp .env.example .env
+
+    S3KEY=$(openssl rand -hex 16)
+    S3SEC=$(openssl rand -hex 24)
+    GSEC=$(openssl rand -hex 32)
+
+    sed -i "s|^AWS_ACCESS_KEY_ID=.*|AWS_ACCESS_KEY_ID=$S3KEY|" .env
+    sed -i "s|^AWS_SECRET_ACCESS_KEY=.*|AWS_SECRET_ACCESS_KEY=$S3SEC|" .env
+    sed -i "s|^GARAGE_RPC_SECRET=.*|GARAGE_RPC_SECRET=$GSEC|" .env
+
+    HOSTS="${listen_hosts:-}"
+    if [ -z "$HOSTS" ]; then
+        HOSTS=$(hostname -I | awk '{print $1}')
+    fi
+    sed -i "s|^EXTERNAL_LISTEN_HOSTS=.*|EXTERNAL_LISTEN_HOSTS=\"$HOSTS\"|" .env
+fi
+
+yunohost app setting "$app" install_dir -v "$install_dir" >/dev/null 2>&1 || true
+yunohost app setting "$app" listen_hosts -v "${listen_hosts:-auto}" >/dev/null 2>&1 || true
+
+docker compose up -d --remove-orphans
+
+ynh_script_progression "Anytype sync stack is running. Import $install_dir/etc/client.yml in the Anytype client."
