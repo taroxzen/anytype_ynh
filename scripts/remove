@@ -1,0 +1,18 @@
+#!/bin/bash
+source _common.sh
+source /usr/share/yunohost/helpers
+set -euo pipefail
+
+ynh_script_progression "Stopping the Anytype sync stack..."
+
+if [ -d "$install_dir" ]; then
+    cd "$install_dir"
+    docker compose down --remove-orphans || true
+fi
+
+if [ "${purge:-0}" = 1 ] || [ "${purge:-}" = "true" ]; then
+    ynh_script_progression "Removing application data..."
+    rm -rf "$install_dir"
+else
+    ynh_script_progression "Data preserved in $install_dir"
+fi
