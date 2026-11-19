@@ -61,6 +61,8 @@ Copy `/opt/any-sync/etc/client.yml` from the server and import it in Anytype: **
 | Backup | `sudo yunohost backup create --apps anytype` |
 | Containers | `cd /opt/any-sync && sudo docker compose ps` |
 
+> ⚠️ **License:** This packaging is AGPL-3.0. The upstream any-sync compose stack stays MIT, and the Anytype client has its own terms.
+
 ---
 
 <a id="türkçe"></a>
@@ -130,11 +132,11 @@ Kurulum script'i şunları yapar:
 
 | Konu | Not |
 |---|---|
-| 📜 Lisans | any-sync compose MIT lisanslı; Anytype istemcisinin ticari kullanım kısıtları olabilir |
+| 📜 Lisans | Bu paket **AGPL-3.0**; upstream any-sync compose MIT; Anytype istemcisinin ayrı lisansı var |
 | 🏷️ Resmiyet | Bu resmi bir YunoHost veya Anytype paketi **değildir** |
 | 🌐 URL | `tbtek.site/anytype` gibi kayıtlı adres sadece panel girdisidir; orada web arayüzü yoktur |
 | 🔒 client.yml | Bu dosyaya erişen herkes ağa katılabilir; herkese açık yayınlama |
 
 ---
 
-Made with ❤️ by [@taroxzen](https://github.com/taroxzen) · MIT 📄
+Made with ❤️ and 🤖 by [@taroxzen](https://github.com/taroxzen) · 📄 AGPL-3.0 (this package) · upstream any-sync: MIT
