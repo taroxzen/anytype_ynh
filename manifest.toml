@@ -1,0 +1,45 @@
+packaging_format = 2
+id = "anytype"
+name = "Anytype Sync"
+description.en = "Self-hosted any-sync network for Anytype with end-to-end encryption."
+description.fr = "Réseau any-sync auto-hébergé pour Anytype, chiffré de bout en bout."
+version = "0.13.0~ynh2"
+maintainers = ["taroxzen"]
+
+[upstream]
+license = "MIT"
+website = "https://anytype.io"
+code = "https://github.com/anyproto/any-sync-dockercompose"
+admindoc = "https://github.com/anyproto/any-sync-dockercompose/wiki"
+
+[integration]
+yunohost = ">= 12.1.17"
+helpers_version = "2.1"
+architectures = "amd64"
+multi_instance = false
+ldap = "not_relevant"
+sso = "not_relevant"
+disk = "1G"
+ram.build = "500M"
+ram.runtime = "1G"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+    type = "path"
+    default = "/anytype"
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+    [install.listen_hosts]
+    ask.en = "Public IP or hostname that Anytype clients will connect to (leave empty to auto-detect)"
+    type = "string"
+    optional = true
+
+[resources]
+    [resources.permissions]
+    main.url = "/"
