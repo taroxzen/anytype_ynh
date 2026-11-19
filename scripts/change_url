@@ -1,0 +1,7 @@
+#!/bin/bash
+source ../settings/scripts/_common.sh
+source /usr/share/yunohost/helpers
+
+# This app has no web configuration to update. YunoHost core handles the URL
+# metadata and SSOwat permission.
+exit 0
