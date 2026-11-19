@@ -10,6 +10,7 @@
 | 🌍 | P2P sync via any-sync / Eşler arası senkron |
 | 🧱 | Docker Compose v2 required / Docker Compose v2 gerekli |
 | 🧑‍💻 | Maintainer: [@taroxzen](https://github.com/taroxzen) |
+| 🤖 | AI-assisted build / AI destekli hazırlık |
 | ⚠️ | Unofficial / Resmi değil |
 
 ## 🌐 Diller / Languages
@@ -24,6 +25,8 @@
 ## 🇬🇧 English
 
 Anytype accounts are created inside the client and stay end-to-end encrypted. The server stores and relays encrypted data only — it never sees private keys.
+
+> 🤖 **AI notice:** This package was written and assembled with AI assistance. Review the scripts before trusting them on a production server.
 
 ### ✅ Requirements
 
@@ -65,6 +68,8 @@ Copy `/opt/any-sync/etc/client.yml` from the server and import it in Anytype: **
 ## 🇹🇷 Türkçe
 
 Anytype hesabı **istemcide** oluşur. 12 kelimelik kurtarma cümlesi ve şifreleme anahtarı cihazında kalır. Sunucu sadece şifreli veri bloklarını saklar ve eşler arasında aktarır — içeriği okuyamaz.
+
+> 🤖 **AI notu:** Bu paket AI yardımıyla yazıldı ve derlendi. Üretim sunucusunda kullanmadan önce script'leri gözden geçir.
 
 ### 🎯 Ne yapar?
 
